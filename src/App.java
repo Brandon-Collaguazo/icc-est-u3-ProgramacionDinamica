@@ -29,7 +29,7 @@ public class App {
     private static void runMaze() {
         boolean[][] predefinedMaze = {
             {true, true, true, true},
-            {false, true, true, true},
+            {false, true, false, true},
             {true, true, false, false},
             {true, true, true, true }
         };
@@ -38,19 +38,29 @@ public class App {
         System.out.println("Laberinto cargado:");
         maze.printMaze();
 
-        Cell start = new Cell(0, 3);
+        Cell start = new Cell(0, 0);
         Cell end = new Cell(3, 3);
 
-        MazeSolver twoDirections = new MazeSolverRecursive();
-        MazeSolver completeDirections = new MazeSolverRecursiveComplete();
+        //MazeSolver twoDirections = new MazeSolverRecursive();
+        //MazeSolver completeDirections = new MazeSolverRecursiveComplete();
+        MazeSolver compMazeSolver = new MazeSolverRecursivoCompletoBT();
 
-        List<Cell> path = twoDirections.getPath(maze.getGrid(), start, end);
-        List<Cell> path2 = completeDirections.getPath(maze.getGrid(), start, end);
+        //List<Cell> path = twoDirections.getPath(maze.getGrid(), start, end);
+        //List<Cell> path2 = completeDirections.getPath(maze.getGrid(), start, end);
         
-        System.out.println("\nCamino Encontrado (Dos direcciones)");
-        System.out.println(path);
+        //System.out.println("\nCamino Encontrado (Dos direcciones)");
+        //System.out.println(path);
 
-        System.out.println("\nCamino Encontrado (Todas las direcciones)");
-        System.out.println(path2);
+        //System.out.println("\nCamino Encontrado (Todas las direcciones)");
+        //System.out.println(path2);
+
+        
+        MazeResult path3 = compMazeSolver.getPath(maze.getGrid(), start, end);
+        System.out.println("Laberinto Recorrido");
+        maze.paintMaze(path3.getPath());
+        System.out.println("Laberinto con las celdas visitadas");
+        maze.paintMazeVisited(path3.getPath(), start, end);
+
+
     }
 }
