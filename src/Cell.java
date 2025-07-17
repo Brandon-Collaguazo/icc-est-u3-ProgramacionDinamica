@@ -1,25 +1,30 @@
 public class Cell {
 
-    int column;
-    int row;
-    public Cell(int column, int row) {
-        this.column = column;
+    public int row, col;
+
+    public Cell(int row, int col) {
         this.row = row;
+        this.col = col;
     }
-    public int getColumn() {
-        return column;
-    }
-    public void setColumn(int column) {
-        this.column = column;
-    }
+
     public int getRow() {
         return row;
     }
+
     public void setRow(int row) {
         this.row = row;
     }
+
+    public int getCol() {
+        return col;
+    }
+
+    public void setCol(int col) {
+        this.col = col;
+    }
+
     @Override
     public String toString() {
-        return "Celda [Columna: " + column + ", Row: " + row + "]";
+        return "Cell [" + row + " , " + col + "]";
     }
 }

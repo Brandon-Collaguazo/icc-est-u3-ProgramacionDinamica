@@ -38,16 +38,19 @@ public class App {
         System.out.println("Laberinto cargado:");
         maze.printMaze();
 
-        Cell start = new Cell(0, 0);
+        Cell start = new Cell(0, 3);
         Cell end = new Cell(3, 3);
 
-        List<MazeSolver> solvers = Arrays.asList(new MazeSolverRecursive());
+        MazeSolver twoDirections = new MazeSolverRecursive();
+        MazeSolver completeDirections = new MazeSolverRecursiveComplete();
 
-        MazeSolver solver = solvers.get(0);
-        List<Cell> path;
-        path = solver.getPath(maze.getGrid(), start, end);
-
-        System.out.println("\nCamino Encontrado");
+        List<Cell> path = twoDirections.getPath(maze.getGrid(), start, end);
+        List<Cell> path2 = completeDirections.getPath(maze.getGrid(), start, end);
+        
+        System.out.println("\nCamino Encontrado (Dos direcciones)");
         System.out.println(path);
+
+        System.out.println("\nCamino Encontrado (Todas las direcciones)");
+        System.out.println(path2);
     }
 }
